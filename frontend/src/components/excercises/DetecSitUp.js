@@ -103,10 +103,8 @@ function SitUp() {
             camera = new Camera(webcamRef.current.video, {
                 onFrame: async () => {
                     await userPose.send({ image: webcamRef.current.video });
-                },
-                width: 1280,
-                height: 720,
-            });
+                }
+            })
             camera.start();
         }
 
@@ -116,15 +114,11 @@ function SitUp() {
             }
         };
     }, []);
-
+    
     return (
-        <>
-            <Row>
-                <Webcam className="input_video" ref={webcamRef} imageSmoothing={true} mirrored={true} style={{ display: 'none' }} />
-                <Col xs={24} md={12} lg={12}>
-                    <canvas className="output" ref={canvasRef} />
-                </Col>
-            </Row>
+        <> 
+            <Webcam className="input_video" ref={webcamRef} imageSmoothing={true} mirrored={true} style={{ display: 'none' }} />
+            <canvas className="output" ref={canvasRef} style={{ width: '100%', height: '78.89%'}} />
         </>
     );
 };
